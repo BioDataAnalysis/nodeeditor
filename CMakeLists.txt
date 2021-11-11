@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.2)
 # version 3.4 is required as other do not work with C++14 and clang
 
+cmake_policy(SET CMP0072 NEW)
+
 project(QtNodes CXX)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -43,11 +45,20 @@ endif()
 add_subdirectory(external)
 
 # Find the QtWidgets library
-find_package(QT NAMES Qt6 Qt5 COMPONENTS
+find_package(Qt6 COMPONENTS
              Core
              Widgets
              Gui
              OpenGL)
+
+if (NOT Qt6_FOUND)
+  find_package(Qt5 COMPONENTS
+               Core
+               Widgets
+               Gui
+               OpenGL)
+endif()
+
 
 qt_add_resources(RESOURCES ./resources/resources.qrc)
 
