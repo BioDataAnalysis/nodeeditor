@@ -5,7 +5,7 @@
 #include <nodes/NodeData>
 
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDesktopWidget>
+#include <QtGui/QScreen>
 
 #include "ImageShowModel.hpp"
 #include "ImageLoaderModel.hpp"
@@ -45,7 +45,7 @@ main(int argc, char *argv[])
   view.setWindowTitle("Data Flow: Resizable Images");
   view.resize(800, 600);
   // Center window.
-  view.move(QApplication::desktop()->screen()->rect().center() - view.rect().center());
+  view.move(QApplication::primaryScreen()->availableGeometry().center() - view.rect().center());
   view.show();
 
   return app.exec();

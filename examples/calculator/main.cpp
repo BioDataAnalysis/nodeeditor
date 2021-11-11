@@ -6,9 +6,10 @@
 #include <nodes/NodeData>
 
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDesktopWidget>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QVBoxLayout>
+
+#include <QtGui/QScreen>
 
 #include "AdditionModel.hpp"
 #include "DivisionModel.hpp"
@@ -104,7 +105,8 @@ main(int argc, char *argv[])
   mainWidget.setWindowTitle("Data Flow: simplest calculator");
   mainWidget.resize(800, 600);
   // Center window.
-  mainWidget.move(QApplication::desktop()->screen()->rect().center() - mainWidget.rect().center());
+  mainWidget.move(QApplication::primaryScreen()->availableGeometry().center() - mainWidget.rect().center());
+
   mainWidget.showNormal();
 
   return app.exec();

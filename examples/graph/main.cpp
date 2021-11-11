@@ -4,8 +4,8 @@
 #include <nodes/StyleCollection>
 
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDesktopWidget>
-#include <QtWidgets/QAction>
+#include <QtGui/QAction>
+#include <QtGui/QScreen>
 
 #include "CustomGraphModel.hpp"
 
@@ -59,7 +59,7 @@ main(int argc, char *argv[])
   view.resize(800, 600);
 
   // Center window.
-  view.move(QApplication::desktop()->screen()->rect().center() - view.rect().center());
+  view.move(QApplication::primaryScreen()->availableGeometry().center() - view.rect().center());
   view.showNormal();
 
   return app.exec();
