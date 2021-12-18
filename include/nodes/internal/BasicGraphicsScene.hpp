@@ -105,6 +105,9 @@ Q_SIGNALS:
   nodeMoved(NodeId const nodeId, QPointF const & newLocation);
 
   void
+  nodeSelected(NodeId const nodeId);
+
+  void
   nodeDoubleClicked(NodeId const nodeId);
 
   void
